@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Socials — Aesthetic Links</title>
+  <meta name="description" content="All my social media links in one beautiful page." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #0c0f14;        /* deep charcoal */
+      --bg-2: #111826;        /* navy midnight */
+      --card: rgba(255,255,255,0.08);
+      --card-stroke: rgba(255,255,255,0.12);
+      --text: #e8ecf1;
+      --muted: #a6b0c3;
+      --glow-1: #9b66ff;      /* lavender */
+      --glow-2: #00e0ff;      /* cyan */
+      --accent: #7b5cff;      /* primary accent */
+      --accent-2: #1ee5bd;    /* secondary accent */
+      --radius: 22px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(60vw 60vw at 20% -10%, rgba(123,92,255,0.22), transparent 55%),
+        radial-gradient(50vw 50vw at 90% 20%, rgba(30,229,189,0.18), transparent 55%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2));
+      display:grid;
+      place-items:center;
+      padding:32px;
+    }
+
+
+
+a {
+      text-decoration: none;
+      color: #333;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+
+    .wrap{
+      width:min(980px, 100%);
+      display:grid;
+      gap:22px;
+    }
+    header{
+      background:linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+      border:1px solid var(--card-stroke);
+      box-shadow: var(--shadow), 0 0 0 1px rgba(255,255,255,0.05) inset;
+      border-radius: calc(var(--radius) + 6px);
+      padding:28px 28px 24px;
+      backdrop-filter: blur(10px) saturate(120%);
+      position:relative;
+      overflow:hidden;
+    }
+    header:before{
+      content:"";
+      position:absolute; inset:-1px; border-radius:inherit;
+      background: conic-gradient(from 180deg, var(--glow-1), var(--glow-2), var(--glow-1));
+      filter: blur(40px); opacity:.18; z-index:0;
+    }
+    .hero{
+      position:relative; z-index:1;
+      display:flex; align-items:center; gap:18px;
+    }
+    .avatar{
+      width:72px; height:72px; border-radius:20px;
+      background: linear-gradient(145deg, rgba(123,92,255,.45), rgba(30,229,189,.45));
+      display:grid; place-items:center; font-weight:800; font-size:26px;
+      box-shadow: 0 8px 26px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.16) inset;
+    }
+    h1{font-size:clamp(26px, 4vw, 36px); line-height:1.15; margin:0}
+    .subtitle{color:var(--muted); font-weight:400}
+
+    /* Grid of links */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat( auto-fit, minmax(230px, 1fr) );
+      gap:16px;
+    }
+    .card{
+      background: var(--card);
+      border:1px solid var(--card-stroke);
+      border-radius: var(--radius);
+      padding:16px;
+      display:flex; align-items:center; gap:14px;
+      text-decoration:none; color:var(--text);
+      position:relative; overflow:hidden;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(0,0,0,.35), 0 0 0 2px rgba(123,92,255,.25);
+      border-color: rgba(255,255,255,0.28);
+    }
+    .card:after{
+      content:""; position:absolute; inset:-1px; border-radius:inherit;
+      background: radial-gradient(120px 60px at 0% 0%, rgba(123,92,255,.25), transparent 60%),
+                  radial-gradient(120px 60px at 100% 100%, rgba(30,229,189,.25), transparent 60%);
+      opacity:0; transition: opacity .25s ease;
+    }
+    .card:hover:after{ opacity:.9 }
+
+    .icon{
+      width:42px; height:42px; flex:0 0 42px; border-radius:14px;
+      display:grid; place-items:center; position:relative; overflow:hidden;
+      background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .label{font-weight:600; letter-spacing:.2px}
+    .handle{color:var(--muted); font-family:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px}
+
+    /* Tiny aesthetic toggle */
+    .toolbar{
+      display:flex; gap:10px; align-items:center; margin-top:8px;
+    }
+    .btn{
+      background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border:1px solid var(--card-stroke);
+      border-radius: 999px; padding:8px 12px; font-size:12px; color:var(--text);
+      cursor:pointer; transition: transform .2s ease, border-color .2s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.28) }
+
+    footer{ color:var(--muted); text-align:center; font-size:12px; margin-top:6px }
+
+    /* Brand accent rings */
+    .ring{ position:absolute; inset:-1px; border-radius:inherit; pointer-events:none; filter:blur(14px); opacity:.18 }
+    .insta{ background: conic-gradient(#f9ce34, #ee2a7b, #6228d7, #f9ce34) }
+    .yt{ background: radial-gradient(circle at 40% 50%, #ff0000, transparent 60%) }
+    .behance{ background: radial-gradient(circle at 40% 50%, #1769ff, transparent 60%) }
+    .x{ background: radial-gradient(circle at 40% 50%, #fff, transparent 60%) }
+    .fb{ background: radial-gradient(circle at 40% 50%, #1877f2, transparent 60%) }
+    .li{ background: radial-gradient(circle at 40% 50%, #0a66c2, transparent 60%) }
+    .up{ background: radial-gradient(circle at 40% 50%, #6fda44, transparent 60%) }
+    .pin{ background: radial-gradient(circle at 40% 50%, #e60023, transparent 60%) }
+    .threads{ background: radial-gradient(circle at 40% 50%, #fff, transparent 60%) }
+
+    /* Make it pretty on very small screens */
+    @media (max-width:420px){
+      .icon{ width:38px; height:38px; border-radius:12px }
+    }
+
+    .back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+  border: 1px solid var(--card-stroke);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  transition: transform .2s ease, border-color .2s ease;
+}
+.back-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.28);
+}
+
+      
+    
+
+  </style>
+</head>
+<body>
+    <a href="index.html"><button class="back-btn" onclick="history.back()">← Back</button></a>
+    <main class="wrap">
+      <header>
+        <div class="hero">
+          <div class="avatar" aria-hidden="true">AT</div>
+          <div>
+            <h1>All My Socials</h1>
+            <div class="subtitle">aesthetic vibes ✨</div>
+            <div class="toolbar">
+              <button class="btn" onclick="swapTheme('violet')">Violet/Cyan</button>
+              <button class="btn" onclick="swapTheme('sunset')">Sunset</button>
+              <button class="btn" onclick="swapTheme('mint')">Mint</button>
+              <button class="btn" onclick="swapTheme('rose')">Rose</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid" aria-label="Social media links">
+        <!-- Instagram -->
+        <a class="card" href="https://www.instagram.com/ankush_retoucher?igsh=OXd3YzA5cmdxcGwz&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+          <span class="icon">
+            <span class="ring insta"></span>
+            <!-- Simple Instagram camera icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="6" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>
+            <div class="label">Instagram</div>
+            <div class="handle">ankush_retoucher</div>
+          </span>
+        </a>
+
+        <!-- YouTube -->
+        <a class="card" href="https://youtube.com/@yourchannel" target="_blank" rel="noopener" aria-label="YouTube">
+          <span class="icon">
+            <span class="ring yt"></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2.5" y="6" width="19" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <polygon points="10,9 16,12 10,15" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>
+            <div class="label">YouTube</div>
+            <div class="handle">@yourchannel</div>
+          </span>
+        </a>
+
+        <!-- Behance -->
+        <a class="card" href="https://behance.net/yourname" target="_blank" rel="noopener" aria-label="Behance">
+          <span class="icon">
+            <span class="ring behance"></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <text x="3" y="17" font-size="14" font-weight="700" font-family="Inter, Arial">B</text>
+              <text x="12.5" y="12" font-size="10" font-weight="700" font-family="Inter, Arial">ē</text>
+            </svg>
+          </span>
+          <span>
+            <div class="label">Behance</div>
+            <div class="handle">behance.net/yourname</div>
+          </span>
+        </a>
+
+        <!-- X (Twitter) -->
+        <a class="card" href="https://x.com/yourhandle" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <span class="icon">
+            <span class="ring x"></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4l7.5 8.4L4.8 20h2.4l4.7-5.3L16.8 20H20l-7.9-8.8L19.2 4h-2.4l-4.3 4.9L7.2 4H4z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>
+            <div class="label">X (Twitter)</div>
+            <div class="handle">@yourhandle</div>
+          </span>
+        </a>
+
+        <!-- Facebook -->
+        <a class="card" href="https://facebook.com/yourhandle" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon">
+            <span class="ring fb"></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 8h2V5h-2c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v5.5h3V14H16l.5-3h-3v-1.5c0-.9.6-1.5 1.5-1.5z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>
+            <div class="label">Facebook</div>
+            <div class="handle">/yourhandle</div>
+          </span>
+        </a>
+
+        <!-- LinkedIn -->
+        <a class="card" href="https://linkedin.com/in/yourhandle" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="icon">
+            <span class="ring li"></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="8" cy="9" r="1.5" fill="currentColor"/>
+              <rect x="6.5" y="11" width="3" height="7" rx="1.2" fill="currentColor"/>
+              <path d="M12.5 11h2.2c2 0 3.3 1.3 3.3 3.4V18h-3v-3.1c0-.9-.6-1.5-1.5-1.5h-1v4.6h-3V11z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>
+            <div class="label">LinkedIn</div>
+            <div class="handle">/in/yourhandle</div>
+          </span>
+        </a>
+
+        <!-- Upwork -->
+        <a class="card" href="https://www.upwork.com/freelancers/~yourid" target="_blank" rel="noopener" aria-label="Upwork">
+          <span class="icon">
+            <span class="ring up"></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <text x="4" y="16" font-size="12" font-weight="800" font-family="Inter, Arial">Up</text>
+            </svg>
+          </span>
+          <span>
+            <div class="label">Upwork</div>
+            <div class="handle">/freelancers/~yourid</div>
+          </span>
+        </a>
+
+        <!-- Pinterest -->
+        <a class="card" href="https://pinterest.com/yourhandle" target="_blank" rel="noopener" aria-label="Pinterest">
+          <span class="icon">
+            <span class="ring pin"></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3C7.6 3 4 6.2 4 10.2c0 2.9 1.8 5.4 4.4 6.3-.1-.6-.2-1.6 0-2.3l1.2-4.7s-.3-.7-.3-1.6c0-1.6.9-2.9 2.1-2.9 1 0 1.4.8 1.4 1.7 0 1-.6 2.4-.9 3.7-.3 1.1.6 2.1 1.7 2.1 2 0 3.5-2.1 3.5-5 0-2.6-1.9-4.4-4.6-4.4-3.1 0-5 2.3-5 4.7 0 .9.3 1.8.8 2.3.1.1.1.1.1 0l.3-1.2c.1-.4.3-.7.2-1.2-.2-.7.2-1.4 1-1.4 1.1 0 1.8 1.5 1.8 3.3 0 1.2-.4 2.1-.4 2.1l-1.2 5c-.2.8-.1 1.9-.1 2.6l0 0c0 0 3.9-1.5 4.7-5.8 0 0 1.3 2.1 3.6 2.1 2.4 0 4.8-2.1 4.8-5.9C20 6.1 16.6 3 12 3z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>
+            <div class="label">Pinterest</div>
+            <div class="handle">@yourhandle</div>
+          </span>
+        </a>
+
+        <!-- Threads -->
+        <a class="card" href="https://www.threads.net/@yourhandle" target="_blank" rel="noopener" aria-label="Threads">
+          <span class="icon">
+            <span class="ring threads"></span>
+            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3.5c-4.7 0-8.5 3.8-8.5 8.5S7.3 20.5 12 20.5s8.5-3.8 8.5-8.5S16.7 3.5 12 3.5zm2.8 8.1c1.2.5 2 1.4 2 2.7 0 2.3-2 3.9-4.9 3.9-1.7 0-3.4-.6-4.5-1.5l.9-1.6c1 .8 2.2 1.3 3.6 1.3 1.5 0 2.6-.8 2.6-2 0-1.1-.8-1.7-2.4-1.7h-1v-1.6h.9c1.4 0 2.2-.6 2.2-1.6 0-.9-.7-1.5-1.8-1.5-1.1 0-2 .5-2.6 1.3l-1.6-.9c.9-1.4 2.6-2.3 4.5-2.3 2.3 0 3.8 1.2 3.8 3.1 0 1.2-.6 2.1-1.7 2.4z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>
+            <div class="label">Threads</div>
+            <div class="handle">@yourhandle</div>
+          </span>
+        </a>
+      </section>
+
+      <footer>
+         <span id=""></span>
+      </footer>
+    </main>
+
+    <script>
+      // Live year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Tiny theme switcher with CSS variables
+      const palettes = {
+        violet: {
+          glow1: '#9b66ff', glow2: '#00e0ff', accent: '#7b5cff', accent2: '#1ee5bd',
+          bg1: '#0c0f14', bg2: '#111826'
+        },
+        sunset: {
+          glow1: '#ff8a00', glow2: '#ff2d55', accent: '#ff6a88', accent2: '#ffc371',
+          bg1: '#0f0a12', bg2: '#1a0f1f'
+        },
+        mint: {
+          glow1: '#00ffa3', glow2: '#00d1ff', accent: '#1ee5bd', accent2: '#7b5cff',
+          bg1: '#07130f', bg2: '#0f1f1b'
+        },
+        rose: {
+          glow1: '#ff6bcb', glow2: '#8a9eff', accent: '#ff6bcb', accent2: '#8a9eff',
+          bg1: '#100c10', bg2: '#191222'
+        }
+      }
+      function swapTheme(key){
+        const p = palettes[key] || palettes.violet;
+        const r = document.documentElement;
+        r.style.setProperty('--glow-1', p.glow1);
+        r.style.setProperty('--glow-2', p.glow2);
+        r.style.setProperty('--accent', p.accent);
+        r.style.setProperty('--accent-2', p.accent2);
+        r.style.setProperty('--bg-1', p.bg1);
+        r.style.setProperty('--bg-2', p.bg2);
+      }
+    </script>
+</body>
+</html>
